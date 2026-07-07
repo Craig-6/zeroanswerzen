@@ -5,48 +5,151 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zero Answer Zen</title>
   <style>
+    :root {
+      --bg: #111;
+      --panel: #0d0d0d;
+      --muted: #cccccc;
+      --accent: #00c3ff;
+      --white: #ffffff;
+      --sidebar-width: 220px;
+    }
+
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: #111;
-      color: white;
+      background: var(--bg);
+      color: var(--white);
       font-family: Arial, sans-serif;
+    }
+
+    .container {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
+      min-height: 100vh;
     }
 
-    h1 {
-      font-size: 3rem;
-      color: white;
-      margin-bottom: 15px;
+    /* Left menu / sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--panel);
+      padding: 24px 18px;
+      color: var(--muted);
     }
 
-    .email-link {
-      color: inherit;
+    .brand {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    nav a {
+      display: block;
+      color: var(--muted);
       text-decoration: none;
+      padding: 10px 6px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.03);
+      color: var(--white);
+    }
+
+    /* Main content area */
+    .main {
+      flex: 1;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      color: var(--muted);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0 0 6px 0;
+      color: var(--white);
+    }
+
+    header p.lead {
+      margin: 0 0 12px 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    section {
+      width: 100%;
+      background: rgba(255,255,255,0.02);
+      padding: 18px;
+      border-radius: 8px;
+      color: var(--muted);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: var(--white);
     }
 
     .email-footer {
       position: fixed;
       bottom: 20px;
-      width: 100%;
-      text-align: center;
-      color: #cccccc;
-      font-size: 1rem;
+      left: calc(var(--sidebar-width) + 20px);
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    p {
-      font-size: 1.5rem;
-      color: #cccccc;
+    .email-link { color: inherit; text-decoration: none; }
+
+    /* Responsive: collapse sidebar on narrow screens */
+    @media (max-width: 720px) {
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; display: flex; gap: 12px; overflow-x: auto; }
+      .email-footer { left: 20px; }
+      .main { padding: 20px; }
     }
   </style>
 </head>
 <body>
-  <div>
-    <h1>Zero Answer Zen</h1>
-    <p>Not all questions have answers</p>
+  <div class="container">
+    <aside class="sidebar" aria-label="Main menu">
+      <div class="brand">Zero Answer Zen</div>
+      <nav>
+        <a href="#about">The Concept</a>
+        <a href="#media">Pictures &amp; Videos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#mission">Mission</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header>
+        <h1>Zero Answer Zen</h1>
+        <p class="lead">Not all questions have answers</p>
+      </header>
+
+      <section id="about">
+        <h2>The Concept</h2>
+        <p>Explain the idea behind Zero Answer Zen — what the concept means and why it exists.</p>
+      </section>
+
+      <section id="media">
+        <h2>Pictures &amp; Videos</h2>
+        <p>Gallery and video collection coming soon — add images here or embed videos (YouTube/Vimeo).</p>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+        <p>Frequently asked questions and answers (or reflections) about the project.</p>
+      </section>
+
+      <section id="mission">
+        <h2>Mission</h2>
+        <p>Share the mission statement and goals.</p>
+      </section>
+    </main>
   </div>
 
   <footer class="email-footer">
